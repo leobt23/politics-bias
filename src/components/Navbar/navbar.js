@@ -18,7 +18,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <div className="logo">270<span className="win">toWIN</span></div>
+          <div className="logo">115<span className="win"> e meio</span></div>
         </Link>
         <div className="nav-menu">
           {navItems.map((item, index) => (

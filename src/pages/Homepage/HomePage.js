@@ -1,7 +1,7 @@
-// src/pages/HomePage/HomePage.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
+import LatestPollsChart from './LatestPollsChart'; // Make sure this file exists in the same directory
 
 const HomePage = () => {
   const featuredSections = [
@@ -27,18 +27,16 @@ const HomePage = () => {
         ))}
       </div>
 
+      {/* Gráfico com últimas sondagens */}
+      <LatestPollsChart />
+      
       <div className="news-section">
-        <h2>Latest Updates</h2>
+        <h2>Últimas Notícias</h2>
         <div className="news-list">
           <div className="news-item">
             <h3>Latest Poll Results</h3>
             <p>New polling data shows shifts in key battleground states...</p>
             <span className="news-date">March 15, 2025</span>
-          </div>
-          <div className="news-item">
-            <h3>Senate Race Analysis</h3>
-            <p>In-depth look at the most competitive senate races...</p>
-            <span className="news-date">March 14, 2025</span>
           </div>
         </div>
       </div>
