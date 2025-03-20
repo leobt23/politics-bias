@@ -1,17 +1,19 @@
 // src/components/Navbar/Navbar.js
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
+  const location = useLocation();
+
   const navItems = [
     { name: "News", path: "/" },
-    { name: "President", path: "/" },
-    { name: "Senate", path: "/" },
-    { name: "House", path: "/" },
-    { name: "Governor", path: "/" },
-    { name: "States", path: "/" },
-    { name: "More", path: "/" }
+    { name: "President", path: "/president" },
+    { name: "Senate", path: "/senate" },
+    { name: "House", path: "/house" },
+    { name: "Governor", path: "/governor" },
+    { name: "States", path: "/states" },
+    { name: "More", path: "/more" }
   ];
 
   return (
@@ -25,7 +27,7 @@ const Navbar = () => {
             <Link 
               key={index} 
               to={item.path} 
-              className={`nav-item ${item.name === "President" ? "active" : ""}`}
+              className={`nav-item ${location.pathname === item.path ? "active" : ""}`}
             >
               {item.name}
             </Link>

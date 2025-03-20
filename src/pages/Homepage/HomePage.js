@@ -1,21 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
-import LatestPollsChart from './LatestPollsChart'; // Make sure this file exists in the same directory
+import LatestPollsChart from '../../components/LatestPollsChart/LatestPollsChart';
 
 const HomePage = () => {
   const featuredSections = [
-    { title: "Presidential Race", path: "/", description: "Latest polls and electoral map projections" },
-    { title: "Senate Battles", path: "/", description: "Current senate race forecasts and analysis" },
-    { title: "House Elections", path: "/", description: "District-by-district breakdown of house races" },
-    { title: "Gubernatorial Races", path: "/", description: "State governor election coverage" }
+    { title: "Eleições Legislativas", path: "/", description: "A luta pelo lugar de Primeiro-Ministro" },
+    { title: "Corrida Presidencial", path: "/", description: "Sondagens sobre os candidatos a Belém" },
+    { title: "Eleições Autárquicas", path: "/", description: "Lutas pelas autarquias do país" },
+    { title: "Eleições Europeias", path: "/", description: "Os lugares que serão ocupados no Parlamente Europeu" }
   ];
 
   return (
     <div className="home-page">
       <div className="hero-section">
-        <h1>Political Analysis & Election Forecasting</h1>
-        <p>Unbiased coverage of the latest election polls, maps, and projections</p>
+        <h1>Análise e Dados Sobre Eleições</h1>
+        <p>Últimas sondagens, mapas e projeções</p>
       </div>
 
       <div className="featured-grid">
