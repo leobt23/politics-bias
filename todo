@@ -1,0 +1,47 @@
+Gráfico de sondagens: 
+ - Média ponderada (últimas 3 sondagens);
+ - Sondagens por empresa;
+ - 
+
+Gráfico de notícias:
+  - Número de notícias por partido;
+  - Número de notícias por candidato;
+  - Número de notícias por tema;
+
+Gráfico de redes sociais:
+  - Número de menções por partido;
+  - Número de menções por candidato;
+  - Número de menções por tema;
+
+Gráfico de resultados eleitorais:
+  - Percentagem de votos por partido;
+  - Percentagem de votos por candidato;
+  - Número de deputados por partido;
+  - Número de deputados por candidato;
+
+Outros gráficos:
+  - Taxa de aprovação dos candidatos;
+
+Mapa de Portugal:
+  - Percentagem e eleitos por Distritos;
+  - Percentagem e eleitos por Concelhos;
+  - Percentagem e eleitos por Freguesias;
+
+ChatBot:
+  - Programas eleitorais;
+  - Candidatos;
+  - Sondagens;
+  - Notícias;
+
+Classificação orientação política (esq e dir):
+  - Classificação de autores de opinião;
+  - Classificação dos partidos;
+  - Classificação dos candidatos;
+
+Previsão de resultados:
+  - Previsão de resultados com base em sondagens;
+  - Previsão de resultados com base em análise de redes sociais;
+  - Previsão de resultados com base em análise de notícias;	
+  - Previsão do numero de deputados por partido;
+  - Previsão dos deputados eleitos por distrito;
+

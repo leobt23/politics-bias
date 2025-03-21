@@ -7,13 +7,13 @@ const Navbar = () => {
   const location = useLocation();
 
   const navItems = [
-    { name: "News", path: "/" },
-    { name: "President", path: "/president" },
-    { name: "Senate", path: "/senate" },
-    { name: "House", path: "/house" },
-    { name: "Governor", path: "/governor" },
-    { name: "States", path: "/states" },
-    { name: "More", path: "/more" }
+    { name: "Noticias", path: "/" },
+    { name: "Legislativas", path: "/legislativas" },
+    { name: "Presidencia", path: "/presidencia" },
+    { name: "Autarquicas", path: "/autarquicas" },
+    { name: "Europeias", path: "/europeias" },
+    { name: "EUA", path: "/eua" },
+    { name: "Outros", path: "/outros" }
   ];
 
   return (
