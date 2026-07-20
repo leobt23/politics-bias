@@ -8,6 +8,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: "Noticias", path: "/" },
+    { name: "Programas Eleitorais", path: "/prog_eleitorais" },
     { name: "Legislativas", path: "/legislativas" },
     { name: "Presidencia", path: "/presidencia" },
     { name: "Autarquicas", path: "/autarquicas" },

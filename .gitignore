@@ -21,3 +21,17 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# editor settings
+.vscode/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local notebook data and generated model artifacts
+/notebooks/bart-political-model/
+/notebooks/electoral_programs/
+/notebooks/political_dataset/
+/notebooks/sql_chroma_db/
+/notebooks/left-right.txt

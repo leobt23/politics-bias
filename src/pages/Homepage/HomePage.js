@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
 import LatestPollsChart from '../../components/LatestPollsChart/LatestPollsChart';
 
 const HomePage = () => {
+  const [query, setQuery] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const featuredSections = [
     { title: "Eleições Legislativas", path: "/", description: "A luta pelo lugar de Primeiro-Ministro" },
     { title: "Corrida Presidencial", path: "/", description: "Sondagens sobre os candidatos a Belém" },
     { title: "Eleições Autárquicas", path: "/", description: "Lutas pelas autarquias do país" },
-    { title: "Eleições Europeias", path: "/", description: "Os lugares que serão ocupados no Parlamente Europeu" }
+    { title: "Eleições Europeias", path: "/", description: "Os lugares que serão ocupados no Parlamento Europeu" }
   ];
+
+  const handleAsk = async () => {
+    if (!query) return;
+    setLoading(true);
+    setAnswer("");
+
+    try {
+      const response = await fetch("http://localhost:8000/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: query }),
+      });
+
+      const data = await response.json();
+      setAnswer(data.answer || "Sem resposta encontrada.");
+    } catch (error) {
+      console.error(error);
+      setAnswer("Erro ao contactar o modelo RAG.");
+    }
+
+    setLoading(false);
+  };
 
   return (
     <div className="home-page">
@@ -29,7 +55,7 @@ const HomePage = () => {
 
       {/* Gráfico com últimas sondagens */}
       <LatestPollsChart />
-      
+
       <div className="news-section">
         <h2>Últimas Notícias</h2>
         <div className="news-list">
@@ -39,6 +65,28 @@ const HomePage = () => {
             <span className="news-date">March 15, 2025</span>
           </div>
         </div>
+      </div>
+
+      {/* Secção para o modelo RAG */}
+      <div className="rag-section">
+        <h2>Pergunte ao Modelo RAG</h2>
+        <div className="rag-input">
+          <input
+            type="text"
+            placeholder="Escreve a tua pergunta..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button onClick={handleAsk} disabled={loading}>
+            {loading ? "A procurar..." : "Perguntar"}
+          </button>
+        </div>
+        {answer && (
+          <div className="rag-answer">
+            <h3>Resposta:</h3>
+            <p>{answer}</p>
+          </div>
+        )}
       </div>
     </div>
   );
