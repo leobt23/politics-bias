@@ -5,6 +5,17 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const LatestPollsChart = () => {
+    const parties = [
+      { name: 'PS', color: '#ff69b4' },
+      { name: 'AD', color: '#ff9900' },
+      { name: 'Chega', color: '#b266d6' },
+      { name: 'IL', color: '#87CEFA' },
+      { name: 'BE', color: '#90EE90' },
+      { name: 'CDU', color: '#ff5252' },
+      { name: 'Livre', color: '#4fa66a' },
+      { name: 'PAN', color: '#39a3d8' },
+    ];
+
     const data = {
         labels: [
             '2024-01-14', '2024-01-18', '2024-01-19', '2024-01-21', '2024-01-28',
@@ -138,17 +149,7 @@ const LatestPollsChart = () => {
     },
     plugins: {
       legend: {
-        position: 'top',
-        align: 'start',
-        labels: {
-          color: '#d7d2c8',
-          usePointStyle: true,
-          pointStyle: 'rectRounded',
-          boxWidth: 9,
-          boxHeight: 9,
-          padding: 18,
-          font: { size: 11, weight: '600' },
-        },
+        display: false,
       },
       tooltip: {
         enabled: true,
@@ -190,10 +191,21 @@ const LatestPollsChart = () => {
   };
 
   return (
-    <div className="polling-chart">
+    <figure className="polling-chart">
       <div className="polling-chart__top">
-        <h3>Intenção de voto</h3>
+        <div>
+          <h3>Intenção de voto</h3>
+          <p>Percentagem de votos · série histórica</p>
+        </div>
         <span>Jan. 2024 — Mar. 2025</span>
+      </div>
+      <div className="polling-chart__legend" aria-label="Partidos representados no gráfico">
+        {parties.map((party) => (
+          <span key={party.name}>
+            <i style={{ backgroundColor: party.color }} aria-hidden="true" />
+            {party.name}
+          </span>
+        ))}
       </div>
       <div className="polling-chart__canvas">
         <Line
@@ -203,7 +215,8 @@ const LatestPollsChart = () => {
           aria-label="Gráfico de linhas com a evolução da intenção de voto de oito forças políticas entre janeiro de 2024 e março de 2025."
         />
       </div>
-    </div>
+      <figcaption>Passe o cursor ou toque sobre o gráfico para consultar cada observação.</figcaption>
+    </figure>
   );
 };
 
