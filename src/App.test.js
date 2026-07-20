@@ -9,4 +9,5 @@ test('renders the editorial homepage', () => {
   render(<HomePage />);
   expect(screen.getByRole('heading', { name: /a política não cabe/i })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: /dossiers em destaque/i })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /programas em conversa/i })).toBeInTheDocument();
 });

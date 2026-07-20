@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './HomePage.css';
 import LatestPollsChart from '../../components/LatestPollsChart/LatestPollsChart';
+import ElectoralChat from '../../components/ElectoralChat/ElectoralChat';
 
 const featuredStories = [
   {
@@ -193,7 +194,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="assistant-section" id="assistente" aria-labelledby="assistant-title">
+      <ElectoralChat />
+      <section className="assistant-section" aria-labelledby="assistant-title" style={{ display: 'none' }}>
         <div className="assistant-copy">
           <span className="section-kicker section-kicker--light">Inteligência editorial</span>
           <h2 id="assistant-title">Pergunte aos programas, não aos slogans.</h2>
