@@ -1,44 +1,69 @@
-// src/components/Navbar/Navbar.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './navbar.css';
 
+const navItems = [
+  { name: 'Início', href: '#inicio' },
+  { name: 'Análises', href: '#analises' },
+  { name: 'Sondagens', href: '#sondagens' },
+  { name: 'Programas', href: '#programas' },
+  { name: 'Assistente', href: '#assistente' },
+];
+
 const Navbar = () => {
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const navItems = [
-    { name: "Noticias", path: "/" },
-    { name: "Programas Eleitorais", path: "/prog_eleitorais" },
-    { name: "Legislativas", path: "/legislativas" },
-    { name: "Presidencia", path: "/presidencia" },
-    { name: "Autarquicas", path: "/autarquicas" },
-    { name: "Europeias", path: "/europeias" },
-    { name: "EUA", path: "/eua" },
-    { name: "Outros", path: "/outros" }
-  ];
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          <div className="logo">115<span className="win"> e meio</span></div>
-        </Link>
-        <div className="nav-menu">
-          {navItems.map((item, index) => (
-            <Link 
-              key={index} 
-              to={item.path} 
-              className={`nav-item ${location.pathname === item.path ? "active" : ""}`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-        <div className="search-icon">
-          <span>🔍</span>
+    <>
+      <div className="edition-bar">
+        <div className="edition-bar__inner">
+          <span>Jornal independente de análise política</span>
+          <span className="edition-bar__meta">Portugal · Dados, contexto e contraditório</span>
         </div>
       </div>
-    </nav>
+
+      <header className="site-header">
+        <div className="navbar-container">
+          <Link to="/" className="navbar-logo" aria-label="115 e meio — página inicial">
+            <span className="logo-number">115</span>
+            <span className="logo-words">e<br />meio</span>
+          </Link>
+
+          <button
+            className="menu-toggle"
+            type="button"
+            aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+          </button>
+
+          <nav
+            id="primary-navigation"
+            className={`nav-menu ${menuOpen ? 'nav-menu--open' : ''}`}
+            aria-label="Navegação principal"
+          >
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href} className="nav-item">
+                {item.name}
+              </a>
+            ))}
+          </nav>
+
+          <a className="header-cta" href="#sondagens">
+            Explorar dados <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </header>
+    </>
   );
 };
 

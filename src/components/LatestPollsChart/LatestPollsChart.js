@@ -128,20 +128,81 @@ const LatestPollsChart = () => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
+    interaction: {
+      mode: 'index',
+      intersect: false,
+    },
+    animation: {
+      duration: 550,
+    },
     plugins: {
-      legend: { display: true },
-      tooltip: { enabled: true },
+      legend: {
+        position: 'top',
+        align: 'start',
+        labels: {
+          color: '#d7d2c8',
+          usePointStyle: true,
+          pointStyle: 'rectRounded',
+          boxWidth: 9,
+          boxHeight: 9,
+          padding: 18,
+          font: { size: 11, weight: '600' },
+        },
+      },
+      tooltip: {
+        enabled: true,
+        backgroundColor: '#f7f3ea',
+        titleColor: '#191917',
+        bodyColor: '#3d3c38',
+        borderColor: '#b32b24',
+        borderWidth: 1,
+        padding: 12,
+        displayColors: true,
+        callbacks: {
+          label: (context) => `${context.dataset.label}: ${context.parsed.y.toFixed(1)}%`,
+        },
+      },
     },
     scales: {
-      x: { grid: { display: false } },
-      y: { grid: { display: true }, beginAtZero: true },
+      x: {
+        grid: { display: false },
+        border: { color: '#51514c' },
+        ticks: {
+          color: '#8f8d87',
+          maxTicksLimit: 7,
+          maxRotation: 0,
+          font: { size: 10 },
+        },
+      },
+      y: {
+        beginAtZero: true,
+        suggestedMax: 40,
+        border: { display: false },
+        grid: { color: 'rgba(255, 255, 255, 0.08)' },
+        ticks: {
+          color: '#8f8d87',
+          callback: (value) => `${value}%`,
+          font: { size: 10 },
+        },
+      },
     },
   };
 
   return (
-    <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
-      <h2>Sondagens</h2>
-      <Line data={data} options={options} />
+    <div className="polling-chart">
+      <div className="polling-chart__top">
+        <h3>Intenção de voto</h3>
+        <span>Jan. 2024 — Mar. 2025</span>
+      </div>
+      <div className="polling-chart__canvas">
+        <Line
+          data={data}
+          options={options}
+          role="img"
+          aria-label="Gráfico de linhas com a evolução da intenção de voto de oito forças políticas entre janeiro de 2024 e março de 2025."
+        />
+      </div>
     </div>
   );
 };

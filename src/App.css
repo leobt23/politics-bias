@@ -1,26 +1,53 @@
-/* src/App.css */
+:root {
+  --paper: #f7f3ea;
+  --ink: #191917;
+  --ink-soft: #3d3c38;
+  --muted: #74716a;
+  --red: #b32b24;
+  --rule: #cfc7b9;
+  --rule-soft: #e1dace;
+  --page-width: 1320px;
+  --display-font: Georgia, 'Times New Roman', serif;
+  --body-font: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 118px;
 }
 
 body {
   margin: 0;
-  padding: 0;
-  background-color: #f5f5f5;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--body-font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+textarea,
+input {
+  font-family: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(179, 43, 36, 0.32);
+  outline-offset: 3px;
+}
+
+::selection {
+  color: #fff;
+  background: var(--red);
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
-}
-
-.content-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  width: 100%;
 }
