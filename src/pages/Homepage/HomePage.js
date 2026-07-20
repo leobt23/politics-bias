@@ -160,7 +160,7 @@ const HomePage = () => {
       <section className="polls-section" id="sondagens" aria-labelledby="polls-title">
         <div className="polls-section__intro">
           <span className="section-kicker section-kicker--light">Barómetro</span>
-          <h2 id="polls-title">A evolução do voto, sem tirar conclusões precipitadas.</h2>
+          <h2 id="polls-title">O voto, em movimento.</h2>
           <p>
             Comparamos várias observações ao longo do tempo. Passe sobre as linhas para consultar cada valor.
           </p>
